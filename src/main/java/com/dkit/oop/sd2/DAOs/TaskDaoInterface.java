@@ -7,8 +7,11 @@ import java.util.List;
 
 public interface TaskDaoInterface {
 
-    // Feature 1 - Get all Entities
     List<Task> getAllTasks() throws DaoException;
 
+    /* Feature 4 - Insert Data
+    * -- change to return value
+    * */
+    void insertTask(Task newTask) throws DaoException;
 }
 

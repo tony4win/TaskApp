@@ -4,7 +4,6 @@ import com.dkit.oop.sd2.DTOs.Task;
 import com.dkit.oop.sd2.Exceptions.DaoException;
 
 import java.sql.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,5 +31,26 @@ public class MySqlTaskDAO extends MySqlDao implements TaskDaoInterface {
         }
         return tasksList;
     }
+
+    /* Insert new Task to Database */
+    public void insertTask(Task task) throws DaoException {
+
+        String query = "INSERT INTO tasks (title, status, priority, description, due_date) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection connection = this.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, task.getTitle());
+            preparedStatement.setString(2, task.getStatus());
+            preparedStatement.setString(3, task.getPriority());
+            preparedStatement.setString(4, task.getDescription());
+            preparedStatement.setDate(5, new Date(task.getDueDate().getTime()));
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("Error in insertData(): " + e.getMessage());
+        }
+    }
+
 
 }
