@@ -38,13 +38,15 @@ public class TaskApp {
     public void handleMenu() {
 
         String choice = input.nextLine();
+        Task addedTask = null;
 
         switch (choice) {
             case "1":
                 displayAllTasks();
                 break;
             case "2":
-                insertTask();
+                addedTask = insertTask();
+                System.out.println("Added Task: "+ addedTask);
                 break;
             case "99":
                 System.out.println("Exiting...");
@@ -71,7 +73,7 @@ public class TaskApp {
     }
 
     /*Feature 4 - inserting Task */
-    private void insertTask() {
+    private Task insertTask() {
 
         System.out.println("Task Title:");
         String title = input.nextLine();
@@ -97,6 +99,8 @@ public class TaskApp {
         } catch (DaoException e) {
             System.out.println("Error inserting task: " + e.getMessage());
         }
+
+        return newTask;
     }
 }
 

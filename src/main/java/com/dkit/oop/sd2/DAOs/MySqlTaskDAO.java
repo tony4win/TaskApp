@@ -32,8 +32,8 @@ public class MySqlTaskDAO extends MySqlDao implements TaskDaoInterface {
         return tasksList;
     }
 
-    /* Insert new Task to Database */
-    public void insertTask(Task task) throws DaoException {
+    /* Feature 4 - Insert new Task to Database */
+    public Task insertTask(Task task) throws DaoException {
 
         String query = "INSERT INTO tasks (title, status, priority, description, due_date) VALUES (?, ?, ?, ?, ?)";
 
@@ -50,6 +50,8 @@ public class MySqlTaskDAO extends MySqlDao implements TaskDaoInterface {
         } catch (SQLException e) {
             throw new DaoException("Error in insertData(): " + e.getMessage());
         }
+
+        return null;
     }
 
 

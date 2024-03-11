@@ -9,9 +9,7 @@ public interface TaskDaoInterface {
 
     List<Task> getAllTasks() throws DaoException;
 
-    /* Feature 4 - Insert Data
-    * -- change to return value
-    * */
-    void insertTask(Task newTask) throws DaoException;
+    /*Feature - 4*/
+    Task insertTask(Task newTask) throws DaoException;
 }
 
