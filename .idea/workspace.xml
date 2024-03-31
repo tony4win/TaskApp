@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dkit/oop/sd2/DAOs/MySqlTaskDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dkit/oop/sd2/DAOs/MySqlTaskDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dkit/oop/sd2/DAOs/TaskDaoInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dkit/oop/sd2/DAOs/TaskDaoInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dkit/oop/sd2/TaskObjects/TaskApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/dkit/oop/sd2/TaskObjects/TaskApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/dkit/oop/sd2/TaskObjects/TaskApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/dkit/oop/sd2/TaskObjects/TaskApp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

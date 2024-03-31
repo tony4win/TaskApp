@@ -33,7 +33,9 @@ public class TaskApp {
 
     public void displayMenu() {
         System.out.println("1. Display All Tasks");
-        System.out.println("2. Insert Task");
+        System.out.println("2. Display by ID");
+        System.out.println("3. Delete by ID");
+        System.out.println("4. Insert Task");
         System.out.println("99. Exit");
     }
 
@@ -47,6 +49,12 @@ public class TaskApp {
                 displayAllTasks();
                 break;
             case "2":
+                displayTaskById();
+                break;
+            case "3":
+                deleteTaskById();
+                break;
+            case "4":
                 addedTask = insertTask();
                 System.out.println("Added Task: "+ addedTask);
                 break;
@@ -58,9 +66,7 @@ public class TaskApp {
         }
     }
 
-    /* Feature 1 - Get All Tasks
-    *  author - Jianfeng
-    *  */
+    /* Feature 1 - Jianfeng (show all Tasks) */
     private void displayAllTasks() {
         try {
             List<Task> allTasks = taskDao.getAllTasks();
@@ -78,10 +84,45 @@ public class TaskApp {
         }
     }
 
-    /* Get Date from User to Insert
-    *  for Feature 4
-    *  author - Tony
-    * */
+    /* Feature 2 - Megan (display by ID) */
+    public void displayTaskById() {
+        try {
+            System.out.print("Enter Task ID: ");
+            int Id = Integer.parseInt(input.nextLine());
+
+            Task task = taskDao.getTaskById(Id);
+            if (task != null) {
+                System.out.println("Task by ID " + Id + ": " + task);
+            } else {
+                System.out.println("Task with ID " + Id + " not found.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number for Task ID.");
+        } catch (DaoException e) {
+            System.out.println("Error retrieving task: " + e.getMessage());
+        }
+    }
+
+    /* Feature 3 - Megan (delete task by ID) */
+    private void deleteTaskById() {
+        try {
+            System.out.print("Enter Task ID to delete: ");
+            int taskId = Integer.parseInt(input.nextLine());
+
+            Task deletedTask = taskDao.deleteTaskById(taskId);
+            if (deletedTask != null) {
+                System.out.println("Task with ID " + taskId + " deleted.");
+            } else {
+                System.out.println("Task with ID " + taskId + " not found or could not be deleted.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number for Task ID.");
+        } catch (DaoException e) {
+            System.out.println("Error deleting task: " + e.getMessage());
+        }
+    }
+
+    /* Get Date for Feature 4 - Tony (insert Task) */
 
     public Date getDate(){
                 

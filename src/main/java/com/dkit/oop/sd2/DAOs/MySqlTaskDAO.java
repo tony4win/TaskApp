@@ -34,6 +34,53 @@ public class MySqlTaskDAO extends MySqlDao implements TaskDaoInterface {
         return tasksList;
     }
 
+
+    /* Feature 2 - Megan */
+    @Override
+    public Task getTaskById(int id) throws DaoException {
+        Task task = null;
+        try (Connection connection = this.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM tasks WHERE id = ?");
+        ) {
+            preparedStatement.setInt(1, id);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    String title = resultSet.getString("title");
+                    String status = resultSet.getString("status");
+                    String priority = resultSet.getString("priority");
+                    String description = resultSet.getString("description");
+                    java.sql.Date dueDate = resultSet.getDate("due_date");
+
+                    task = new Task(id, title, status, priority, description, dueDate);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Error in getTaskById(): " + e.getMessage());
+        }
+        return task;
+    }
+
+    /* Feature 3 - Megan */
+    @Override
+    public Task deleteTaskById(int id) throws DaoException {
+        Task deletedTask = null;
+        try (Connection connection = this.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM tasks WHERE id = ?")) {
+
+            preparedStatement.setInt(1, id);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                // If a task was deleted, create a Task object with the deleted task_id
+                deletedTask = new Task(id, null, null, null, null, null);
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException("Error in deleteTaskById(): " + e.getMessage());
+        }
+        return deletedTask;
+    }
+
     /* Feature 4 - Insert new Task to Database */
     public Task insertTask(Task task) throws DaoException {
 
