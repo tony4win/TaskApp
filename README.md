@@ -1,23 +1,25 @@
 # Task Manager App
 
-## Basic Structure
+## Classes
+
+### Basic Structure
 These are the 3 main Classes where we create our methods for working with Data
 
-### TaskApp
+#### TaskApp
 Acts as a handler for I/O for the User
 Calls functions from MySqlTaskDAO
 
-### MySqlTaskDAO
+#### MySqlTaskDAO
 Actually handles Data between the Program & Database
 Uses the TaskDaoInterface as an Interface
 
-### TaskDaoInterface
+#### TaskDaoInterface
 Declares the Methods we need to use
 
-## Other Classes
+### Other Classes
 
-### MySqlDao
+#### MySqlDao
 Contains Methods for Opening & Closing Connections to Database
 
-### DTO - Task
+#### DTO - Task
 Basic Class for creating Task Objects
