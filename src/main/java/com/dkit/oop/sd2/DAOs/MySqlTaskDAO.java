@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MySqlTaskDAO extends MySqlDao implements TaskDaoInterface {
+
+    /* Feature 1 - Jianfeng */
     @Override
     public List<Task> getAllTasks() throws DaoException {
         List<Task> tasksList = new ArrayList<>();

@@ -7,8 +7,10 @@ import com.dkit.oop.sd2.Exceptions.DaoException;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.Date;
 
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
 public class TaskApp {
 
@@ -56,6 +58,9 @@ public class TaskApp {
         }
     }
 
+    /* Feature 1 - Get All Tasks
+    *  author - Jianfeng
+    *  */
     private void displayAllTasks() {
         try {
             List<Task> allTasks = taskDao.getAllTasks();
@@ -66,13 +71,41 @@ public class TaskApp {
         }
     }
 
+    /* Grab all Tasks from List*/
     private void displayTasks(List<Task> tasks) {
         for (Task task : tasks) {
             System.out.println(task);
         }
     }
 
-    /*Feature 4 - inserting Task */
+    /* Get Date from User to Insert
+    *  for Feature 4
+    *  author - Tony
+    * */
+
+    public Date getDate(){
+                
+        System.out.println("Enter the date (YYYY-MM-DD):");
+
+        String dateString = input.nextLine();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date = null;
+
+        try {
+            date = dateFormat.parse(dateString);
+        } catch (ParseException e) {
+            System.out.println("Invalid date format");
+        }
+
+        //return date;
+        return new Date();
+    }
+
+    /* Feature 4 - inserting Task
+    *  author - Tony
+    * */
     private Task insertTask() {
 
         System.out.println("Task Title:");
@@ -89,7 +122,8 @@ public class TaskApp {
 
         /* Change to allow user to insert Date
         * will need to use a Parser */
-        Date due_date = new Date();
+        Date due_date = getDate();
+        System.out.println(due_date+"++++++");
 
         Task newTask = new Task(title, status, priority, description, due_date);
 
