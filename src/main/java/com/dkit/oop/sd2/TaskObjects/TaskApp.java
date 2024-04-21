@@ -164,7 +164,7 @@ public class TaskApp {
         /* Change to allow user to insert Date
         * will need to use a Parser */
         Date due_date = getDate();
-        System.out.println(due_date+"++++++");
+        System.out.println(due_date);
 
         Task newTask = new Task(title, status, priority, description, due_date);
 
